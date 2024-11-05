@@ -1,0 +1,56 @@
+# 项目配置
+project:
+  name: charging_power_system
+  debug: true
+
+# 数据库配置
+database:
+  host: localhost
+  port: 3306
+  user: root
+  password: BYP456
+  database: charging_system
+  pool_size: 5
+  pool_recycle: 3600
+
+# Kafka配置
+kafka:
+  bootstrap_servers:
+    - localhost:9092
+  group_id: charging_group
+  topics:
+    site_info: charging.site.info
+    power_allocation: charging.power.allocation
+    charging_status: charging.status
+
+# API配置
+api:
+  maintenance_url: http://maintenance-service/api
+  timeout: 30
+  version: v1
+  prefix: /api
+
+# 算法配置
+algorithm:
+  max_power_decrease: 0.3
+  min_power_affect: 0.1
+  optimization_interval: 15
+
+# 数据清理配置
+data_retention:
+  charging_records: 30
+  power_predictions: 7
+  optimization_tasks: 90
+
+# 日志配置
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: logs/app.log
+  max_bytes: 10485760
+  backup_count: 5
+
+# 监控配置
+metrics:
+  enabled: true
+  port: 9090
